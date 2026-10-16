@@ -12,7 +12,6 @@
       </div>
     </dl>
 
-    <p class="mt-12 text-meta text-muted">© {{ year }} {{ site.name }}</p>
   </footer>
 </template>
 
@@ -28,5 +27,4 @@ const items = [
   { label: 'Instagram', value: c.instagram, href: c.instagramUrl, external: true },
   { label: 'Ciudad', value: c.city, href: '' },
 ].filter((i) => isReal(i.value))
-const year = new Date().getFullYear()
 </script>
