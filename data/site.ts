@@ -3,7 +3,7 @@ export const site = {
   name: 'Arturo Hernández',
   firstName: 'Arturo',
   role: 'Fotógrafo y videógrafo freelance',
-  lead: 'También creo herramientas digitales para negocios.',
+  lead: 'Imagen limpia y cuidada para marcas y negocios.',
   contact: {
     email: '[correo@ejemplo.com]',
     instagram: '[@usuario]',

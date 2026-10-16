@@ -14,15 +14,6 @@
           <BeforeAfter />
         </div>
       </section>
-
-      <section id="crm" class="mx-auto max-w-[1600px] border-t border-rule px-5 py-16 md:px-10 md:py-24">
-        <ProjectHead :index="crmProject.index" :title="crmProject.title" :status="crmProject.status">{{ crmProject.text }}</ProjectHead>
-        <ul class="mt-10 grid gap-px overflow-hidden border border-rule bg-rule md:mt-14 md:grid-cols-3">
-          <li v-for="f in crmProject.features" :key="f" class="bg-paper p-6 md:p-8">
-            <p class="font-display text-2xl font-light md:text-3xl">{{ f }}</p>
-          </li>
-        </ul>
-      </section>
     </main>
     <ContactSection />
     <PhotoViewer :photos="photos" :index="viewer" @close="viewer = null" @change="viewer = $event" />
@@ -30,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { crmProject, photoProject, projectsIntro } from '~/data/projects'
+import { photoProject, projectsIntro } from '~/data/projects'
 import { series } from '~/data/work'
 
 const photos = series.flatMap((s) => s.photos)

@@ -23,7 +23,7 @@ export default defineNuxtConfig({
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'theme-color', content: '#FFFFFF' },
-        { name: 'description', content: 'Arturo Hernández, fotógrafo y videógrafo freelance. También creo herramientas digitales para negocios.' },
+        { name: 'description', content: 'Arturo Hernández, fotógrafo y videógrafo freelance. Fotografía y video para marcas y negocios.' },
       ],
       // Marca el html antes de pintar para que el estado inicial de las animaciones no parpadee.
       script: [

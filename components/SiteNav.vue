@@ -3,7 +3,7 @@
     <nav class="mx-auto flex max-w-[1600px] items-center justify-between gap-4 px-5 py-3 md:px-10" aria-label="Principal">
       <a href="#inicio" class="font-display text-xl font-light tracking-tight">{{ site.name }}</a>
       <ul class="flex items-center gap-5 text-meta md:gap-9">
-        <li class="hidden sm:block"><a href="#proyectos" class="link-line">Proyectos</a></li>
+        <li class="hidden sm:block"><a href="#proyectos" class="link-line">Fotografía</a></li>
         <li class="hidden sm:block"><a href="#video" class="link-line">Video</a></li>
         <li><a href="#contacto" class="link-line text-accent">Contacto</a></li>
         <li><ThemeToggle /></li>

@@ -9,7 +9,7 @@
         <p data-hero-fade class="font-display text-2xl font-light italic text-accent md:text-3xl">{{ site.role }}</p>
         <p data-hero-fade class="max-w-[30ch] text-lead text-muted">{{ site.lead }}</p>
         <div data-hero-fade class="flex flex-wrap items-center gap-x-8 gap-y-3 text-meta">
-          <a href="#proyectos" class="link-line font-medium">Ver proyectos</a>
+          <a href="#proyectos" class="link-line font-medium">Ver trabajo</a>
           <a href="#contacto" class="link-line font-medium text-accent">Contacto</a>
         </div>
       </div>
