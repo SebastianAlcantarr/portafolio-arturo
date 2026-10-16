@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dos temas, mismos nombres de token: "blanco" (por defecto) y "azul" (azul noche). */
+@layer base {
+  :root,
+  :root[data-theme='blanco'] {
+    --paper: 255 255 255; /* #FFFFFF */
+    --ink: 11 27 58; /* #0B1B3A, 16:1 sobre paper */
+    --muted: 74 90 122; /* #4A5A7A, 6.9:1 */
+    --rule: 214 224 242; /* #D6E0F2 */
+    --plate: 234 240 251; /* #EAF0FB */
+    --accent: 27 79 224; /* #1B4FE0, 6.4:1 */
+    color-scheme: light;
+  }
+
+  :root[data-theme='azul'] {
+    --paper: 10 21 48; /* #0A1530 */
+    --ink: 234 240 255; /* #EAF0FF, 15:1 */
+    --muted: 160 177 214; /* #A0B1D6, 8:1 */
+    --rule: 36 52 92; /* #24345C */
+    --plate: 17 32 70; /* #112046 */
+    --accent: 127 168 255; /* #7FA8FF, 7.6:1 */
+    color-scheme: dark;
+  }
+
+  html {
+    @apply bg-paper text-ink antialiased;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    scrollbar-color: rgb(var(--ink) / 0.35) rgb(var(--paper));
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-paper font-sans text-body;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    caret-color: rgb(var(--accent));
+  }
+
+  ::selection {
+    background: rgb(var(--accent));
+    color: rgb(var(--paper));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 4px;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    @apply font-display font-light;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* Estado inicial de las animaciones: solo si JS las va a correr (clase puesta antes del primer pintado). */
+.motion-ok [data-hero-title] {
+  visibility: hidden;
+}
+.motion-ok [data-hero-photo],
+.motion-ok [data-reveal] {
+  clip-path: inset(100% 0 0 0);
+}
+.motion-ok [data-hero-fade] {
+  opacity: 0;
+}
+
+.link-line {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+  transition: background-size 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-line:hover {
+  background-size: 0% 1px;
+  background-position: 100% 100%;
+}
+
+/* La máscara de SplitText recorta por la caja de línea; este margen negativo deja respirar los descendentes (g, y, p). */
+[data-hero-title] div,
+[data-heading] div {
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+/* Collage: al pasar el cursor (o enfocar con teclado) una foto resalta y las demás se desenfocan. */
+.collage .tile {
+  transition: filter 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    scale 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (hover: hover) {
+  .collage:has(.tile:hover) .tile:not(:hover) {
+    filter: blur(10px) saturate(0.8);
+    opacity: 0.55;
+  }
+  .collage .tile:hover {
+    scale: 1.025;
+    position: relative;
+    z-index: 2;
+  }
+}
+.collage:has(.tile:focus-visible) .tile:not(:focus-visible) {
+  filter: blur(10px) saturate(0.8);
+  opacity: 0.55;
+}
+@media (prefers-reduced-motion: reduce) {
+  .collage .tile {
+    transition: none;
+  }
+}
