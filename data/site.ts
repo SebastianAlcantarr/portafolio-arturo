@@ -5,7 +5,9 @@ export const site = {
   role: 'Fotógrafo y videógrafo freelance',
   lead: 'Imagen limpia y cuidada para marcas y negocios.',
   contact: {
-    email: '[correo@ejemplo.com]',
+    email: 'arturo001509@gmail.com',
+    phone: '56 2166 7485',
+    phoneHref: 'tel:+525621667485',
     instagram: '[@usuario]',
     instagramUrl: '',
     city: '[Ciudad]',

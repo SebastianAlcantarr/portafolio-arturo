@@ -3,21 +3,12 @@
     <h2 data-heading class="max-w-[18ch] text-series">¿Tienes un proyecto en mente? Hablemos.</h2>
 
     <dl class="mt-10 grid gap-6 border-t border-rule pt-6 md:mt-14 md:grid-cols-3">
-      <div>
-        <dt class="text-meta text-muted">Correo</dt>
+      <div v-for="i in items" :key="i.label">
+        <dt class="text-meta text-muted">{{ i.label }}</dt>
         <dd class="mt-1 font-display text-2xl font-light">
-          <component :is="isReal(c.email) ? 'a' : 'span'" :href="isReal(c.email) ? `mailto:${c.email}` : undefined" :class="isReal(c.email) && 'link-line'">{{ c.email }}</component>
+          <a v-if="i.href" :href="i.href" class="link-line" :target="i.external ? '_blank' : undefined" rel="noopener">{{ i.value }}</a>
+          <span v-else>{{ i.value }}</span>
         </dd>
-      </div>
-      <div>
-        <dt class="text-meta text-muted">Instagram</dt>
-        <dd class="mt-1 font-display text-2xl font-light">
-          <component :is="c.instagramUrl ? 'a' : 'span'" :href="c.instagramUrl || undefined" :class="c.instagramUrl && 'link-line'" target="_blank" rel="noopener">{{ c.instagram }}</component>
-        </dd>
-      </div>
-      <div>
-        <dt class="text-meta text-muted">Ciudad</dt>
-        <dd class="mt-1 font-display text-2xl font-light">{{ c.city }}</dd>
       </div>
     </dl>
 
@@ -29,6 +20,13 @@
 import { site } from '~/data/site'
 
 const c = site.contact
-const isReal = (v: string) => !v.startsWith('[')
+const isReal = (v: string) => !!v && !v.startsWith('[')
+// Solo se muestran los datos ya completados.
+const items = [
+  { label: 'Correo', value: c.email, href: `mailto:${c.email}` },
+  { label: 'Teléfono', value: c.phone, href: c.phoneHref },
+  { label: 'Instagram', value: c.instagram, href: c.instagramUrl, external: true },
+  { label: 'Ciudad', value: c.city, href: '' },
+].filter((i) => isReal(i.value))
 const year = new Date().getFullYear()
 </script>
