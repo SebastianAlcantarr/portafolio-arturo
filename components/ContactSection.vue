@@ -1,6 +1,6 @@
 <template>
   <footer id="contacto" class="mx-auto max-w-[1600px] px-5 pb-8 pt-16 md:px-10 md:pt-24">
-    <h2 data-heading class="max-w-[18ch] text-series">¿Tienes un proyecto en mente? Hablemos.</h2>
+    <h2 data-heading class="max-w-[18ch] text-series">Contacto</h2>
 
     <dl class="mt-10 grid gap-6 border-t border-rule pt-6 md:mt-14 md:grid-cols-3">
       <div v-for="i in items" :key="i.label">
